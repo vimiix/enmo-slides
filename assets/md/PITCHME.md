@@ -436,7 +436,7 @@ if __name__ == "__main__":
 
 ---
 
-<p><span class="slide-title">python中的数据库操作以及ORM</span></p>
+<p><span class="slide-title">数据库操作</span></p>
 
 ```python
 def get_service_list_with_dbtype(request, db_type):
@@ -479,8 +479,77 @@ def get_service_list_with_dbtype(request, db_type):
 
 ---
 
+<p><span class="slide-title">Celery异步任务分发</span></p>
+
+```python
+app = Celery("MozheAPI")
+app.config_from_object('celery_config')
+
+
+@app.task
+def async_assert_oracle_sql(task_id, batch_id, sql_text):
+    """
+    异步执行oracle sql审核任务
+    :param sql_text:  文本
+    :return:
+    """
+    ...
+
+
+# 业务层发起异步任务
+async_assert_oracle_sql.delay(task_id, batch_id, sql_text)
+```
+
+<span class="code-presenting-annotation fragment current-only" data-code-focus="1-2">初始化celery应用，加载配置文件</span>
+<span class="code-presenting-annotation fragment current-only" data-code-focus="5-11">注册任务</span>
+<span class="code-presenting-annotation fragment current-only" data-code-focus="15-16">业务层调用任务的delay方法发起异步任务，执行结果保存在配置文件中指定的CELERY_RESULT_BACKEND</span>
+
+---
+
+<p><span class="slide-title">Websocket消息推送</span></p>
+
+```python
+from channels.generic.websocket import AsyncWebsocketConsumer
+from aredis import StrictRedis
+
+
+class Consumer(AsyncWebsocketConsumer):
+
+    async def connect(self):
+        # Called on connection.
+        # To accept the connection call:
+        await self.accept()
+
+    async def disconnect(self, code):
+        # Called when a WebSocket connection is closed.
+        pass
+
+    async def receive(self, text_data=None, bytes_data=None):
+        # Called with a decoded WebSocket frame.
+
+        # ...
+
+        # 订阅消息
+        r = StrictRedis(**settings.REDIS_DB)
+        ps = r.pubsub()
+        await ps.subscribe(settings.REDIS_CHANNELS)
+        
+        # ...
+            await self.send(text_data=json.dumps(result))
+```
+
+<span class="code-presenting-annotation fragment current-only" data-code-focus="1-2">引入Channels框架,采用支持协程的aredis来操作Redis数据库</span>
+<span class="code-presenting-annotation fragment current-only" data-code-focus="7-10">当建立连接时触发该函数</span>
+<span class="code-presenting-annotation fragment current-only" data-code-focus="12-14">当断开连接时触发该函数</span>
+<span class="code-presenting-annotation fragment current-only" data-code-focus="16-17">当接收到信息时触发该函数</span>
+<span class="code-presenting-annotation fragment current-only" data-code-focus="21-24">建立Redis直连，并异步订阅指定消息频道</span>
+<span class="code-presenting-annotation fragment current-only" data-code-focus="27">当Redis消息频道中有消息产生时，即时发送回前端，实现后端主动推送消息</span>
+
+---
+
 ### 18年技术目标
 
+- 不满足于完成公司的开发任务，深入学习相关技术的原理 <!-- .element: class="fragment" -->
 - 强化NoSQL数据库的学习(Redis / MongoDB) <!-- .element: class="fragment" -->
 - 深入研究两个消息队列开源框架(rabbitmq / kafka) <!-- .element: class="fragment" -->
 

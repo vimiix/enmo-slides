@@ -581,4 +581,4 @@ class Consumer(AsyncWebsocketConsumer):
 
 <br>
 
-<center>[<i class="fa fa-at solid" aria-hidden="true"> vimiix</i>](https://vimiix.com)</center>
+<center>[<i class="fa fa-at solid" aria-hidden="true">查看本文件源码</i>](https://github.com/vimiix/enmo-slides)</center>

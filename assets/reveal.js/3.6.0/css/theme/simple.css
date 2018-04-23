@@ -13,9 +13,6 @@ section.has-dark-background, section.has-dark-background h1, section.has-dark-ba
 /*********************************************
  * GLOBAL STYLES
  *********************************************/
-body {
-  background: #fff;
-  background-color: #fff; }
 
 .reveal {
   font-family: "Lato", sans-serif;
@@ -229,7 +226,6 @@ body {
  * IMAGES
  *********************************************/
 .reveal section img {
-  width: 80%;
   margin: 0px 0px;
   background: rgba(255, 255, 255, 0.12);
   /* border: 4px solid #000; */

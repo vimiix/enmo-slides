@@ -181,7 +181,7 @@ class UserViewTest(unittest.TestCase):
 
 #### 技术篇·项目经历
 
--  墨者-数据库自动化平台项  <!-- .element: class="fragment" -->
+-  墨者-数据库自动化平台项目  <!-- .element: class="fragment" -->
 	- <font size="4">我在此项目中主要负责平台系统后端开发。</font>
 	- <font size="4">该项目架构采用  `Django2.0`(后端web框架) + `MySQL`(元数据库) + `Swagger`(接口文档) + `Vue.js`(前端)。实现了对于 `Oracle` ,  `MySQL` 和 `Redis` 的实例运维管理，产品，用户，资源池等的监控和管理。</font>
 	- <font size="4">该项目中，后台任务调度采用开源分布式队列 Celery配合Redis做消息管道。通过Channels 框架实现了前后端的Websocket通信 ,集成了JIRA系统。</font>

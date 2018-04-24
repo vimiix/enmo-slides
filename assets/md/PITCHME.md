@@ -172,7 +172,7 @@ class UserViewTest(unittest.TestCase):
 
 - zCloud - MySQL数据库自动化运维平台项目 <!-- .element: class="fragment" -->
 	- <font size="4">我在此项目中主要负责平台的后台接口层功能开发以及第三方插件的集成。</font>
-	- <font size="4">这个项目架构采用 `Flask 0.12`(后端web框架) + `MySQL`(元数据库) + `Swagger`(接口文档) + `Vue.js`(前端)。该系统实现了对于 `MySQL` 数据库的自动化监控及运维。</font>
+	- <font size="4">这个项目架构采用 `Flask 0.12`(后端web框架) + `MySQL`(元数据库) + `Redis`(消息队列) + `Swagger`(接口文档) + `Vue.js`(前端)。该系统实现了对于 `MySQL` 数据库的自动化监控及运维。</font>
 	- <font size="4">项目中的SQL审核部分基于 `Inception` 并[填了一些坑](http://www.vimiix.com/post/2017/09/28/problems-when-pymysql-connect-inception/), SQL优化部分基于定制后的 `SQLAdvisor` 。</font>
 - 成长 <!-- .element: class="fragment" -->
 	- <font size="4">该项目强化了我在数据库和linux方面的技术，提高了我对于[Python](http://www.vimiix.com/category/Python/)和[Flask](http://www.vimiix.com/post/2017/12/18/some-useful-tricks-in-flask/)使用的熟练度。

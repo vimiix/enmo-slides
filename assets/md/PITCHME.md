@@ -243,7 +243,7 @@ def startup():
 
 ---
 
-<span class='menu-title slide-title'>Oauth</span>
+<span class='menu-title slide-title'><a href="https://www.processon.com/view/link/5a30c736e4b04cc30ddbf964">Oauth</a></span>
 ```python
 #!/usr/bin/python
 #coding=utf-8
